@@ -7,7 +7,7 @@ class WP::Post < WP::Base
 
   attr_accessor :id, :date, :date_gmt, :guid, :modified, :modified_gmt, :slug, :type, :link,
                 :title, :content, :excerpt, :author_id, :featured_media_id, :comment_status, :ping_status,
-                :sticky, :format, :category_ids, :tag_ids, :_links, :meta, :template
+                :sticky, :format, :category_ids, :tag_ids, :_links, :meta, :template, :status
 
   def self.parse(raw = {})
     raw = raw.with_indifferent_access

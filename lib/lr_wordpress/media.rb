@@ -8,7 +8,7 @@ class WP::Media < WP::Base
 
   attr_accessor :id, :date, :date_gmt, :guid, :modified, :modified_gmt, :slug, :type, :link,
                 :title, :author_id, :comment_status, :ping_status, :alt_text, :caption, :description,
-                :media_type, :mime_type, :media_details, :post_id, :source_url, :_links, :template, :meta
+                :media_type, :mime_type, :media_details, :post_id, :source_url, :_links, :template, :meta, :status
 
   def self.parse(raw = {})
     raw = raw.with_indifferent_access
