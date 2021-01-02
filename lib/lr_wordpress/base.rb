@@ -75,7 +75,7 @@ class WP::Base
 
   def handle_request(action: :get, path:, options: {})
     options[:headers] = { 'Authorization' => "Basic #{Rails.application.config.wordpress_api_auth_header}" }
-    WP::Response.new self.class.send(action, URI.escape(path), options)
+    WP::Response.new self.class.send(action, Addressable::URI.escape(path), options)
   end
 
   protected

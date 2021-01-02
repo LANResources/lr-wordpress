@@ -16,6 +16,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency 'httparty'
+  s.add_dependency 'addressable'
   s.add_development_dependency "bundler", ">= 1.13"
   s.add_development_dependency "rake", ">= 12.3.3"
 end

@@ -1,4 +1,4 @@
-require 'uri'
+require 'addressable/uri'
 require 'httparty'
 require "lr_wordpress/engine"
 
