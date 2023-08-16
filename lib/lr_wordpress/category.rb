@@ -3,12 +3,14 @@ class WP::Category < WP::Base
 
   PATH = '/categories'
   SEARCH_FIELDS = [:context, :page, :per_page, :search, :exclude, :include, :order, :orderby, :hide_empty, :parent, :post, :slug]
+  FIELDS = [:id, :count, :description, :link, :name, :slug, :taxonomy, :parent_id, :_links, :meta]
 
-  attr_accessor :id, :count, :description, :link, :name, :slug, :taxonomy, :parent_id, :_links, :meta
+  attr_accessor *FIELDS
 
   def self.parse(raw = {})
     raw = raw.with_indifferent_access
     raw[:parent_id] = raw.delete :parent
+    raw = raw.slice *FIELDS
 
     super raw
   end

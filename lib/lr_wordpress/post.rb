@@ -4,10 +4,11 @@ class WP::Post < WP::Base
   PATH = '/posts'
   SEARCH_FIELDS = [:context, :page, :per_page, :search, :after, :author, :author_exclude, :before, :exclude,
                     :include, :offset, :order, :orderby, :slug, :status, :filter, :categories, :tags]
+  FIELDS = [:id, :date, :date_gmt, :guid, :modified, :modified_gmt, :slug, :type, :link,
+            :title, :content, :excerpt, :author_id, :featured_media_id, :comment_status, :ping_status,
+            :sticky, :format, :category_ids, :tag_ids, :_links, :meta, :template, :status]
 
-  attr_accessor :id, :date, :date_gmt, :guid, :modified, :modified_gmt, :slug, :type, :link,
-                :title, :content, :excerpt, :author_id, :featured_media_id, :comment_status, :ping_status,
-                :sticky, :format, :category_ids, :tag_ids, :_links, :meta, :template, :status
+  attr_accessor *FIELDS
 
   def self.parse(raw = {})
     raw = raw.with_indifferent_access
@@ -16,6 +17,7 @@ class WP::Post < WP::Base
     {author: :author_id, featured_media: :featured_media_id, categories: :category_ids, tags: :tag_ids}.each do |k,v|
       raw[v] = raw.delete k
     end
+    raw = raw.slice *FIELDS
 
     super raw
   end
